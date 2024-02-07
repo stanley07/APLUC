@@ -1,0 +1,21 @@
+{% extends 'property_tax/base.html' %}
+
+{% block title %}View Properties - Your Website{% endblock %}
+
+{% block content %}
+<h2>Enumerate Property</h2>
+<p>Use the form below to enumerate a new property.</p>
+<form method="post" action="{% url 'enumerate_property' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+<hr>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+
+
+<a href="{% url 'home' %}">Go back to Home</a>
+{% endblock %}

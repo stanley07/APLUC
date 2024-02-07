@@ -1,0 +1,25 @@
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+    {{ error_message }}
+</div>
+{% endif %}
+
+<!-- pay_tax.html -->
+{% for property in properties %}
+<form method="POST" action="{% url 'pay_tax' %}">
+    {% csrf_token %}
+    <!-- Add a hidden input field to include the property_id -->
+    <input type="hidden" name="property_id" value="{{ property.id }}">
+    <!-- Use property address as the value for the radio button -->
+    <input type="radio" name="selectedRow" value="{{ forloop.counter0 }}">
+    <label for="property{{ property.id }}">{{ property.property_address }}</label><br>
+    <!-- Add other form fields as needed -->
+    <label for="amount">Amount to Pay (NGN):</label>
+    <input type="number" id="amount" name="amount" min="1" step="1" required>
+    <br>
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required value="ezebo001@gmail.com">
+    <br>
+    <button type="submit">Pay Tax</button>
+</form>
+{% endfor %}

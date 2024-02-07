@@ -1,0 +1,60 @@
+<!-- view_properties.html -->
+{% extends 'property_tax/base.html' %}
+
+{% block title %}View Properties - Your Website{% endblock %}
+
+{% block content %}
+
+<body>
+    <h2>View Properties</h2>
+    <hr>
+    <form method="POST" action="{% url 'pay_tax' %}">
+        {% csrf_token %}
+        {% if properties %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Property Address</th>
+                        <th>Market Value</th>
+                        <th>Building Size(sqm)</th>
+                        <th>Compound Size(sqm)</th>
+                        <th>Construction Value</th>
+                        <th>LGA</th>
+                        <th>Category</th>
+                        <th>Tax Payable</th>
+                        <th>Property Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for property in properties %}
+                        <tr>
+                            <td><input type="radio" name="selectedRow" value="{{ forloop.counter0 }}"></td>
+                            <td>{{ property.property_address }}</td>
+                            <td>{{ property.market_value }}</td>
+                            <td>{{ property.building_size }}</td>
+                            <td>{{ property.compound_size }}</td>
+                            <td>{{ property.construction_value }}</td>
+                            <td>{{ property.lga }}</td>
+                            <td>{{ property.category }}</td>
+                            <td>₦{{ property.tax_payable }}</td>
+                            <td>
+                                {% if property.property_image %}
+                                    <img src="{{ property.property_image.url }}" alt="{{ property.property_address }}" style="width: 100px; height: auto;">
+                                {% else %}
+                                    No Image
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit">Pay Tax</button>
+        {% else %}
+            <p>No properties available.</p>
+        {% endif %}
+    </form>
+    <a href="{% url 'home' %}">Go back to Home</a>
+</body>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+<!-- property_tax/templates/property_tax/index.html -->
+
+{% extends 'property_tax/base.html' %}
+
+{% block title %}Home - Anambra Property Portal{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>Welcome to Anambra Property Portal</h2>
+        <p>Explore your properties and manage taxes with ease.</p>
+
+        <div class="row">
+            {% for _ in '123456' %} {# Adjust the range based on the number of images you want to display #}
+                <div class="col-md-4 mb-4">
+                    <img src="https://source.unsplash.com/400x300/?house" alt="House Image" class="img-fluid">
+                </div>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'enumerate_property' %}" class="btn btn-primary">Enumerate Property</a>
+        <a href="{% url 'view_properties' %}" class="btn btn-success">View Properties</a>
+    </div>
+{% endblock %}
