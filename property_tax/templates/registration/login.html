@@ -3,6 +3,9 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+    <h2>Enumerate Property</h2>
+    <h3>Approved enumerators only.</h3>
+    <p>Login to start enumeration</p>
   <div class="container mt-4">
     <h2>Login</h2>
     <form method="post" class="form">
@@ -10,5 +13,8 @@
       {{ form.as_p }}
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
+    <br>
+    <a href="{% url 'view_properties' %}"><button>View Properties</button></a>
+
   </div>
 {% endblock %}

@@ -49,12 +49,14 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <button type="submit">Pay Tax</button>
+            <div>
+                <button type="submit" style="background-color:green; border-color:white; color:black">Pay Tax</button>
+            </div>
         {% else %}
             <p>No properties available.</p>
         {% endif %}
     </form>
-    <a href="{% url 'home' %}">Go back to Home</a>
+    
 </body>
 
 {% endblock %}
