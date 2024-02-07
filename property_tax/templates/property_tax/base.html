@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Your Website Title{% endblock %}</title>
+    <title>{% block title %}Anambra Property Portal{% endblock %}</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -24,7 +24,7 @@
         }
 
         h5 {
-            color: #ffe100;
+            color: #19170b;
             margin-top: 0;
         }
 
@@ -99,7 +99,7 @@
                     <div class="title">
                         <h1>Anambra Property Portal</h1>
                         
-                        <h5>Property and Land Use Charge</h5>
+                        <h5 style="background-color:powderblue;"><b>Property and Land Use Charge</b></h5>
                     </div>
                         
                     <div class="logo">
@@ -111,8 +111,9 @@
         </header>
 
         <nav>
-            <a href="{% url 'enumerate_property' %}">Enumerate Property</a>
+            
             <a href="{% url 'view_properties' %}">View Properties</a>
+            <a href="{% url 'enumerate_property' %}">Enumerate Property</a>
             
         </nav>
 
@@ -120,7 +121,9 @@
             {% block content %}{% endblock %}
         </main>
     </div>
-    <a href="{% url 'home' %}">Go back to Home</a>
+    <br>
+    <a href="{% url 'home' %}"><button style="background-color:black; border-color:black; color:yellow">Go back to Home</button></a>
+
     <footer>
         <hr>
         <p>&copy; 2024 Systems Analysts. All rights reserved.</p>

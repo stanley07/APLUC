@@ -6,8 +6,8 @@
 
 {% block content %}
     <div class="container mt-4">
-        <h2>Welcome to Anambra Property Portal</h2>
-        <p>Explore your properties and manage taxes with ease.</p>
+        <h2><b>Welcome to Anambra Property Portal</b></h2>
+        <p><b>Explore your properties and manage taxes with ease.</b></p>
 
         <div class="row">
             {% for _ in '123456' %} {# Adjust the range based on the number of images you want to display #}
@@ -16,8 +16,7 @@
                 </div>
             {% endfor %}
         </div>
-
-        <a href="{% url 'enumerate_property' %}" class="btn btn-primary">Enumerate Property</a>
         <a href="{% url 'view_properties' %}" class="btn btn-success">View Properties</a>
+        <a href="{% url 'enumerate_property' %}" class="btn btn-primary">Enumerate Property</a>
     </div>
 {% endblock %}

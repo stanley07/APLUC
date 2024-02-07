@@ -6,16 +6,16 @@ class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
         fields = [
-            'lga',
+            'LGA',
             'property_address',
-            'market_value',
-            'depreciation_rate',
-            'building_size',
             'compound_size',
+            'building_size',
+            'category',
+            'market_value',
+            'depreciation_rate',                        
             'construction_value',
             'relief_rate',
-            'charge_rate',
-            'category',
+            'charge_rate',            
             'payment',
             'property_image',
         ]

@@ -10,7 +10,7 @@ class Property(models.Model):
     building_size = models.DecimalField(max_digits=10, decimal_places=5)
     compound_size = models.DecimalField(max_digits=10, decimal_places=5)
     construction_value = models.IntegerField()
-    lga = models.CharField(max_length=100)
+    LGA = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
     tax_payable = models.DecimalField(max_digits=15, decimal_places=5)
     payment = models.CharField(max_length=255)
