@@ -1,7 +1,6 @@
 from django import forms
 from .models import Property, Payment
 
-
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
@@ -12,33 +11,23 @@ class PropertyForm(forms.ModelForm):
             'building_size',
             'category',
             'market_value',
-<<<<<<< HEAD
             'depreciation_rate',
             'construction_value',
             'relief_rate',
             'charge_rate',
             'status',
-            
-=======
-            'depreciation_rate',                        
-            'construction_value',
-            'relief_rate',
-            'charge_rate',            
-            'payment',
-            'property_image',
->>>>>>> 773f0bc3b74c4c798dfb68f5325ec9b0e6f10672
+            'property_image',  # Removed duplicate fields
         ]
         widgets = {
             'property_image': forms.FileInput(),
         }
 
-
 class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
         fields = [
-            'property',  # Add this field
-            'payment_option',  # Add this field
+            'property',
+            'payment_option',
             'amount_paid',
             'installment_number',
             'remaining_balance',

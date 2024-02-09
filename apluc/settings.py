@@ -29,18 +29,16 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app']
 
 LOGOUT_REDIRECT_URL = 'home'
 
 # settings.py
 LOGIN_URL = 'login'
 
+#SECURE_HSTS_SECONDS = 31536000  # 1 year
 
-
-SECURE_HSTS_SECONDS = 31536000  # 1 year
-
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 
 SESSION_COOKIE_SECURE = True
 
@@ -49,6 +47,8 @@ CSRF_COOKIE_SECURE = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 SECURE_HSTS_PRELOAD = True
+
+
 
 
 # Application definition

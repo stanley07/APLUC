@@ -17,7 +17,6 @@ urlpatterns = [
     path('payment-details/', payment_details, name='payment_details'),
     path('payment-success/', payment_success, name='payment_success'),
     path('payment-failure/', payment_failure, name='payment_failure'),
-    # Add URL pattern for installment payment receipt issuance
     path('receipt/<int:property_id>/', receipt_view, name='receipt_view'),
     path('full-payment/<int:property_id>/', full_payment_form, name='full_payment_form'),
     path('process_payment/', process_payment, name='process_payment'),
