@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Form</title>
+    <!-- Include the Paystack script -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
 <body>
     <h2>Enter Payment Details</h2>
-    <form method="post" action="{% url 'process_payment' %}">
+    <form id="paymentForm" method="post" action="{% url 'process_payment' %}">
         {% csrf_token %}
         <label for="amount">Amount:</label>
         <input type="number" id="amount" name="amount" required><br><br>
@@ -17,7 +19,35 @@
 
         <!-- Additional fields for card information (e.g., card number, expiration date, CVV) can be added here -->
 
-        <button type="submit">Pay Now</button>
+        <button type="button" id="payNowButton">Pay Now</button>
     </form>
+
+    <script>
+    document.getElementById('payNowButton').addEventListener('click', function() {
+        var email = document.getElementById('email').value;
+        var amount = document.getElementById('amount').value;
+
+        // Initialize Paystack Inline
+        var paystackKey = 'your_paystack_public_key'; // Use your own public key
+        var handler = PaystackPop.setup({
+            key: paystackKey,
+            email: email,
+            amount: amount * 100, // Paystack amount is in kobo
+            currency: 'NGN', // Nigerian Naira
+            ref: 'your_unique_transaction_reference', // Generate a unique transaction reference
+            callback: function(response) {
+                // Handle payment success
+                console.log('Payment successful:', response);
+                // Submit the form after payment is successful
+                document.getElementById('paymentForm').submit();
+            },
+            onClose: function() {
+                // Handle payment cancellation
+                console.log('Payment cancelled');
+            }
+        });
+        handler.openIframe(); // Open Paystack payment form
+    });
+    </script>
 </body>
 </html>

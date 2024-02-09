@@ -1,0 +1,14 @@
+<!-- select_payment_option.html -->
+<h2>{{ property.property_address }}</h2>
+<p>Market Value: {{ property.market_value }}</p>
+<!-- Add other property details as needed -->
+
+<form method="POST" action="{% url 'select_payment_option' %}">
+    {% csrf_token %}
+    <!-- Add hidden input for selected property -->
+    <input type="hidden" name="selected_property" value="{{ selected_property }}">
+    <!-- Add hidden input for payment option -->
+    <input type="hidden" name="payment_option" value="full">
+    <!-- Additional form fields if needed -->
+    <button type="submit" style="background-color: green; border-color: white; color: black;">Pay Full Amount</button>
+</form>

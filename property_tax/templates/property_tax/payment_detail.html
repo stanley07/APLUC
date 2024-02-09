@@ -1,0 +1,15 @@
+{% extends 'property_tax/base.html' %}
+
+{% block title %}Payment Details - Your Website{% endblock %}
+
+{% block content %}
+    <h2>Payment Details</h2>
+    <hr>
+    <h3>Property Information</h3>
+    <p>Property Address: {{ property.property_address }}</p>
+    <p>Market Value: {{ property.market_value }}</p>
+    <!-- Add other property details as needed -->
+
+    <h3>Payment Option: {{ payment_option }}</h3>
+    <!-- Add payment instructions based on the selected payment option -->
+{% endblock %}

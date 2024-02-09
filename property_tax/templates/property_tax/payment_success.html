@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Success</title>
 </head>
 <body>
-    <h2>Payment Successful</h2>
-    <p>Your payment has been successfully processed.</p>
-    <!-- You can include additional information or links here -->
+    <h1>Payment Successful!</h1>
+    <h2>Metadata Details:</h2>
+    <ul>
+        {% for key, value in metadata.items %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

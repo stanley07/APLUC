@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Payment Form</title>
+</head>
+<body>
+    <h2>Full Payment Form</h2>
+    
+    {% if property_id %}
+        <form id="fullPaymentForm" method="POST" action="{% url 'full_payment_form' property_id=property.property_id %}">
+            {% csrf_token %}
+            <label for="propertyAddress">Property Address:</label>
+            <input type="text" id="propertyAddress" name="property_address" value="{{ property.property_address }}" readonly><br>
+            <label for="fullAmount">Full Amount:</label>
+            <input type="number" id="fullAmount" name="full_amount" value="{{ property.tax_payable }}" min="0" step="0.01" required><br>
+            <label for="Name">Name:</label>    
+            <input type="text" id="name" name="name" placeholder="Enter your name" required><br>
+            <label for="ASSIN">ASSIN Number:</label>
+            <input type="text" id="ASSIN" name="ASSIN" placeholder="Enter ASSIN number" required><br>
+            <!-- Add other fields as needed -->
+            <button type="submit">Proceed to Paystack Payment</button>
+        </form>
+
+        <script>
+            // Function to auto-populate amount input and display property address
+            function populateAmountAndAddress(propertyId) {
+                // Make an AJAX request to fetch property details including tax payable
+                fetch(`/api/property/${propertyId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Populate the amount input with tax payable
+                        document.getElementById("fullAmount").value = data.tax_payable;
+                        // Display the property address
+                        document.getElementById("propertyAddress").value = data.property_address;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        
+            // Call the function to populate amount input and display property address
+            populateAmountAndAddress('{{ property.property_id }}'); // Replace property.property_id with the actual property ID
+        </script>
+    {% else %}
+        <p>Invalid property ID</p>
+    {% endif %}
+</body>
+</html>
