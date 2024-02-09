@@ -12,12 +12,21 @@ class PropertyForm(forms.ModelForm):
             'building_size',
             'category',
             'market_value',
+<<<<<<< HEAD
             'depreciation_rate',
             'construction_value',
             'relief_rate',
             'charge_rate',
             'status',
             
+=======
+            'depreciation_rate',                        
+            'construction_value',
+            'relief_rate',
+            'charge_rate',            
+            'payment',
+            'property_image',
+>>>>>>> 773f0bc3b74c4c798dfb68f5325ec9b0e6f10672
         ]
         widgets = {
             'property_image': forms.FileInput(),
